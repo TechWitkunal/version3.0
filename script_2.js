@@ -76,34 +76,34 @@ function bot(runBot) {
         funcRNot.innerHTML = "false";
         let array = [];
         array = arrayValue();
-        //(array, "...values are as follow")
+        console.log(array, "...values are as follow")
         if (array.length > 0) {
-            //(funcRNot.innerHTML);
+            console.log(funcRNot.innerHTML);
             runBot = true;
             let otherCondition = playRandom("O", runBot);
-            //(otherCondition, "...other condition run");
+            console.log(otherCondition, "...other condition run");
             if (!(otherCondition)) {
                 if ((getId(1) == userChoise && getId(2) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(3, array)) {
                     botput(3, array, runBot)
                     funcRNot.innerHTML = "true";
-                    // //(runBot, "...value of runbot");
-                    //(funcRNot.innerHTML, "...10");
+                    // console.log(runBot, "...value of runbot");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
-                // //(funcRNot.innerHTML == "false");
+                // console.log(funcRNot.innerHTML == "false");
                 if ((getId(2) == userChoise && getId(3) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(1, array)) {
                     botput(1, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(1) == userChoise && getId(3) == userChoise && checkplace(2, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(2, array)) {
                     botput(2, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 //
@@ -111,44 +111,44 @@ function bot(runBot) {
                     // if (checkplace(6, array)) {
                     botput(6, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(5) == userChoise && getId(6) == userChoise && checkplace(4, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(4, array)) {
                     botput(4, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(4) == userChoise && getId(6) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 //
-                //(array)
+                console.log(array)
                 if ((getId(7) == userChoise && getId(8) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(9, array)) {
                     botput(9, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(8) == userChoise && getId(9) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(7, array)) {
                     botput(7, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(7) == userChoise && getId(9) == userChoise && checkplace(8, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(8, array)) {
                     botput(8, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(1) == userChoise && getId(4) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
@@ -156,21 +156,21 @@ function bot(runBot) {
                     runBot = true;
                     botput(7, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(1) == userChoise && getId(7) == userChoise && checkplace(4, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(4, array)) {
                     botput(4, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(4) == userChoise && getId(7) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(1, array)) {
                     botput(1, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 //
@@ -178,7 +178,7 @@ function bot(runBot) {
                     // if (checkplace(8, array)) {
                     botput(8, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // 
                 // }/
@@ -186,94 +186,94 @@ function bot(runBot) {
                     // if (checkplace(2, array)) {
                     botput(2, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(2) == userChoise && getId(8) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(3) == userChoise && getId(6) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(9, array)) {
                     botput(9, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(6) == userChoise && getId(9) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(3, array)) {
                     botput(3, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(3) == userChoise && getId(9) == userChoise && checkplace(6, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(6, array)) {
                     botput(6, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(1) == userChoise && getId(5) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(9, array)) {
                     botput(9, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(5) == userChoise && getId(9) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(1, array)) {
                     botput(1, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(1) == userChoise && getId(9) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(3) == userChoise && getId(5) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(7, array)) {
                     botput(7, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
                 if ((getId(5) == userChoise && getId(7) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(3, array)) {
                     botput(3, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 // }
 
                 if ((getId(3) == userChoise && getId(7) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
-                    //(checkplace(5, array), " ... 1")
+                    console.log(checkplace(5, array), " ... 1")
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
                     funcRNot.innerHTML = "true";
-                    //(funcRNot.innerHTML, "...10");
+                    console.log(funcRNot.innerHTML, "...10");
                 }
                 
                 if (funcRNot.innerHTML == "false"){
                     let randomBox = array[Math.floor(Math.random() * array.length)] // getting random position for bot to play
-                    //(checkplace(randomBox, array));
+                    console.log(checkplace(randomBox, array));
                     botput(randomBox, array, runBot);
                 }
-                //(funcRNot.innerHTML, "...10");
+                console.log(funcRNot.innerHTML, "...10");
             }
         }
     }
 }
 
 function playRandom(sign, runBot) {
-    //(sign,)
+    console.log(sign,)
     botRunTimes++;
     let x = 0, index = 0;
     if (runBot == true) {
@@ -287,7 +287,7 @@ function playRandom(sign, runBot) {
             }
             if (x == 1) {
                 index++;
-                //(index, "....index......../");
+                console.log(index, "....index......../");
                 if (index == 1) {
                     if (checkplace(9, array)) {
                         botput(9, array, runBot);
@@ -300,7 +300,7 @@ function playRandom(sign, runBot) {
                     }
                 }
                 else if (index == 7) {
-                    //(checkplace(3, array), "....../ for 7")
+                    console.log(checkplace(3, array), "....../ for 7")
                     if (checkplace(3, array)) {
                         botput(3, array, runBot);
                         botRunTimes++;
@@ -349,7 +349,7 @@ function otherConditionFunc(sign, array) {
         return true;
     }
     else if ((getId(4) == sign && getId(5) == sign) || (getId(5) == sign && getId(6) == sign) || (getId(4) == sign && getId(6) == sign)) {
-        //("5-6")
+        console.log("5-6")
         if (getId(5) == sign && getId(6) == sign) botput(4, array, runBot);
         else if (getId(4) == sign && getId(6) == sign) botput(5, array, runBot);
         else botput(6, array, runBot);
@@ -403,13 +403,13 @@ function checkplace(randomBox, array) {
             return true;
         }
     }
-    // //(TF, " ... ", randomBox);
-    //(array, "..final array");
+    // console.log(TF, " ... ", randomBox);
+    console.log(array, "..final array");
     return false;
 }
 
 function botput(randomBox, array, runBot) {
-    //(randomBox, "...value of randomBox")
+    console.log(randomBox, "...value of randomBox")
     if (!(runBot)) { return }
     botRunTimes++;
     runBot = false;

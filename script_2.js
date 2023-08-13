@@ -37,12 +37,14 @@ let botRunTimes = 0;
 // when user click
 function clickedBox(element) {
     if (players.classList.contains("player")) {
-        element.innerHTML = `<i class="${playerOIcon}"></i>`;
+        // element.innerHTML = `<i class="${playerOIcon}"></i>`;
+        element.innerHTML = `<i>O</i>`;
         players.classList.add("active");
         playerSign = "O";
         element.setAttribute("id", playerSign);
     } else {
-        element.innerHTML = `<i class="${playerXIcon}"></i>`;
+        // element.innerHTML = `<i class="${playerXIcon}"></i>`;
+        element.innerHTML = `<i>X</i>`;
         players.classList.add("active");
         playerSign = "X";
         element.setAttribute("id", playerSign);
@@ -95,6 +97,7 @@ function bot(runBot) {
                 if ((getId(2) == userChoise && getId(3) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(1, array)) {
                     botput(1, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -102,6 +105,7 @@ function bot(runBot) {
                 if ((getId(1) == userChoise && getId(3) == userChoise && checkplace(2, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(2, array)) {
                     botput(2, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -110,6 +114,7 @@ function bot(runBot) {
                 if ((getId(4) == userChoise && getId(5) == userChoise && checkplace(6, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(6, array)) {
                     botput(6, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -117,6 +122,7 @@ function bot(runBot) {
                 if ((getId(5) == userChoise && getId(6) == userChoise && checkplace(4, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(4, array)) {
                     botput(4, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -124,6 +130,7 @@ function bot(runBot) {
                 if ((getId(4) == userChoise && getId(6) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -133,6 +140,7 @@ function bot(runBot) {
                 if ((getId(7) == userChoise && getId(8) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(9, array)) {
                     botput(9, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -140,6 +148,7 @@ function bot(runBot) {
                 if ((getId(8) == userChoise && getId(9) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(7, array)) {
                     botput(7, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -147,6 +156,7 @@ function bot(runBot) {
                 if ((getId(7) == userChoise && getId(9) == userChoise && checkplace(8, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(8, array)) {
                     botput(8, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -155,6 +165,7 @@ function bot(runBot) {
                     // if (checkplace(7, array)) {
                     runBot = true;
                     botput(7, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -162,6 +173,7 @@ function bot(runBot) {
                 if ((getId(1) == userChoise && getId(7) == userChoise && checkplace(4, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(4, array)) {
                     botput(4, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -169,6 +181,7 @@ function bot(runBot) {
                 if ((getId(4) == userChoise && getId(7) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(1, array)) {
                     botput(1, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -177,6 +190,7 @@ function bot(runBot) {
                 if ((getId(2) == userChoise && getId(5) == userChoise && checkplace(8, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(8, array)) {
                     botput(8, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -185,6 +199,7 @@ function bot(runBot) {
                 if ((getId(5) == userChoise && getId(8) == userChoise && checkplace(2, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(2, array)) {
                     botput(2, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -192,6 +207,7 @@ function bot(runBot) {
                 if ((getId(2) == userChoise && getId(8) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -199,6 +215,7 @@ function bot(runBot) {
                 if ((getId(3) == userChoise && getId(6) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(9, array)) {
                     botput(9, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -206,6 +223,7 @@ function bot(runBot) {
                 if ((getId(6) == userChoise && getId(9) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(3, array)) {
                     botput(3, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -213,6 +231,7 @@ function bot(runBot) {
                 if ((getId(3) == userChoise && getId(9) == userChoise && checkplace(6, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(6, array)) {
                     botput(6, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -220,6 +239,7 @@ function bot(runBot) {
                 if ((getId(1) == userChoise && getId(5) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(9, array)) {
                     botput(9, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -227,6 +247,7 @@ function bot(runBot) {
                 if ((getId(5) == userChoise && getId(9) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(1, array)) {
                     botput(1, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -234,6 +255,7 @@ function bot(runBot) {
                 if ((getId(1) == userChoise && getId(9) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -241,6 +263,7 @@ function bot(runBot) {
                 if ((getId(3) == userChoise && getId(5) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(7, array)) {
                     botput(7, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -248,6 +271,7 @@ function bot(runBot) {
                 if ((getId(5) == userChoise && getId(7) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
                     // if (checkplace(3, array)) {
                     botput(3, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
@@ -257,14 +281,17 @@ function bot(runBot) {
                     console.log(checkplace(5, array), " ... 1")
                     // if (checkplace(5, array)) {
                     botput(5, array, runBot)
+                    console.log("...inside this")
                     funcRNot.innerHTML = "true";
                     console.log(funcRNot.innerHTML, "...10");
                 }
-                
-                if (funcRNot.innerHTML == "false"){
-                    let randomBox = array[Math.floor(Math.random() * array.length)] // getting random position for bot to play
-                    console.log(checkplace(randomBox, array));
-                    botput(randomBox, array, runBot);
+
+                if (funcRNot.innerHTML == "false") {
+                    let array2 = arrayValue();
+                    let place = randomPlace(array2);
+                    funcRNot.innerHTML = true;
+                    console.log(place, "...plase select or not")
+                    if (!place) { funcRNot = false; randomPlace(array2); }
                 }
                 console.log(funcRNot.innerHTML, "...10");
             }
@@ -272,8 +299,20 @@ function bot(runBot) {
     }
 }
 
+function randomPlace(array2) {
+    let randomBox = array2[Math.floor(Math.random() * array2.length)] // getting random position for bot to play
+    console.log(randomBox, allbox[randomBox - 1], allbox[randomBox - 1].childElementCount == 0, "...random box place")
+    if (allbox[randomBox - 1].childElementCount == 0) {
+        runBot = true;
+        botput((randomBox), array2, runBot);
+        console.log(randomBox - 1, "...get selected")
+        return true;
+    }
+    return false;
+}
+
 function playRandom(sign, runBot) {
-    console.log(sign,)
+    console.log(sign)
     botRunTimes++;
     let x = 0, index = 0;
     if (runBot == true) {
@@ -343,52 +382,316 @@ function playRandom(sign, runBot) {
 
 function otherConditionFunc(sign, array) {
     if ((getId(1) == sign && getId(2) == sign) || (getId(2) == sign && getId(3) == sign) || (getId(1) == sign && getId(3) == sign)) {
-        if (getId(2) == sign && getId(3) == sign) botput(1, array, runBot);
-        else if (getId(1) == sign && getId(3) == sign) botput(2, array, runBot);
-        else botput(3, array, runBot);
+        if (getId(2) == sign && getId(3) == sign) {
+            if (checkplace(1 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(1, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(1) == sign && getId(3) == sign) {
+            if (checkplace(2 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(2, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(3 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(3, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(4) == sign && getId(5) == sign) || (getId(5) == sign && getId(6) == sign) || (getId(4) == sign && getId(6) == sign)) {
-        console.log("5-6")
-        if (getId(5) == sign && getId(6) == sign) botput(4, array, runBot);
-        else if (getId(4) == sign && getId(6) == sign) botput(5, array, runBot);
-        else botput(6, array, runBot);
+        // console.log("5-6")
+        if (getId(5) == sign && getId(6) == sign) {
+            if (checkplace(4 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(4, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(4) == sign && getId(6) == sign) {
+            if (checkplace(5 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(5, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(6 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(6, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(7) == sign && getId(8) == sign) || (getId(8) == sign && getId(9) == sign) || (getId(7) == sign && getId(9) == sign)) {
-        if (getId(8) == sign && getId(9) == sign) botput(7, array, runBot);
-        else if (getId(8) == sign && getId(9) == sign) botput(8, array, runBot);
-        else botput(6, array, runBot);
+        if (getId(8) == sign, array == false && getId(9) == sign) {
+            if (checkplace(7 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(7, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(8) == sign && getId(9) == sign) {
+            if (checkplace(8 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(8, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(6 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(6, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(1) == sign && getId(4) == sign) || (getId(4) == sign && getId(7) == sign) || (getId(1) == sign && getId(7) == sign)) {
-        if (getId(4) == sign && getId(7) == sign) botput(1, array, runBot);
-        else if (getId(1) == sign && ge4Id(7) == sign) botput(4, array, runBot);
-        else botput(7, array, runBot);
+        if (getId(4) == sign, array == false && getId(7) == sign) {
+            if (checkplace(1 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(1, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(1) == sign && getId(7) == sign) {
+            if (checkplace(4 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(4, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(7 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(7, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(2) == sign && getId(5) == sign) || (getId(5) == sign && getId(8) == sign) || (getId(2) == sign && getId(8) == sign)) {
-        if (getId(5) == sign && getId(8) == sign) botput(2, array, runBot);
-        else if (getId(2) == sign && getId(8) == sign) botput(5, array, runBot);
-        else botput(8, array, runBot);
+        if (getId(5) == sig2, array && getId(8) == sign) {
+            if (checkplace(2 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(2, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(2) == sign && getId(8) == sign) {
+            if (checkplace(5 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(5, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(8 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(8, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(3) == sign && getId(6) == sign) || (getId(6) == sign && getId(9) == sign) || (getId(3) == sign && getId(9) == sign)) {
-        if (getId(6) == sign && getId(9) == sign) botput(3, array, runBot);
-        else if (getId(3) == sign && getId(9) == sign) botput(6, array, runBot);
-        else botput(9, array, runBot);
+        if (getId(6) == sign, array && getId(9) == sign) {
+            if (checkplace(3 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(3, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(3) == sign && getId(9) == sign) {
+            if (checkplace(6 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(6, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(9 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(9, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(1) == sign && getId(5) == sign) || (getId(5) == sign && getId(9) == sign) || (getId(1) == sign && getId(9) == sign)) {
-        if (getId(5) == sign && getId(9) == sign) botput(1, array, runBot);
-        else if (getId(1) == sign && getId(9) == sign) botput(5, array, runBot);
-        else botput(9, array, runBot);
+        if (getId(5) == sign && getId(9) == sign) {
+            if (checkplace(1 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(1, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(1) == sign && getId(9) == sign) {
+            if (checkplace(5 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(5, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(9 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(9, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     }
     else if ((getId(3) == sign && getId(5) == sign) || (getId(5) == sign && getId(7) == sign) || (getId(3) == sign && getId(7) == sign)) {
-        if (getId(5) == sign && getId(7) == sign) botput(3, array, runBot);
-        else if (getId(3) == sign && getId(7) == sign) botput(5, array, runBot);
-        else botput(7, array, runBot);
+        if (getId(5) == sign, array && getId(7) == sign) {
+            if (checkplace(3 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(3, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else if (getId(3) == sign && getId(7) == sign) {
+            if (checkplace(5 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(5, array, runBot);
+                console.log("...from other");
+            }
+        }
+        else {
+            if (checkplace(7 && array) == false) {
+                let array2 = arrayValue();
+                let place = randomPlace(array2);
+                funcRNot.innerHTML = true;
+                console.log(place, "...plase select or not")
+                if (!place) { funcRNot = false; randomPlace(array2); }
+            } else {
+                botput(7, array, runBot);
+                console.log("...from other");
+            }
+        };
         return true;
     } else {
         return false;
@@ -397,6 +700,7 @@ function otherConditionFunc(sign, array) {
 
 
 function checkplace(randomBox, array) {
+    console.log(randomBox, array, "...check function for this")
     for (let i = 0; i < array.length; i++) {
         if (array[i] == randomBox) {
             // TF = true;
@@ -417,12 +721,14 @@ function botput(randomBox, array, runBot) {
     randomBox = randomBox - 1;
     if (allbox[randomBox].childElementCount == 0) {
         if (players.classList.contains("player")) {
-            allbox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`;
+            // allbox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`;
+            allbox[randomBox].innerHTML = `<i>X</i>`;
             players.classList.remove("active");
             playerSign = "X";
             allbox[randomBox].setAttribute("id", playerSign);
         } else {
-            allbox[randomBox].innerHTML = `<i class="${playerOIcon}"></i>`;
+            // allbox[randomBox].innerHTML = `<i class="${playerOIcon}"></i>`;
+            allbox[randomBox].innerHTML = `<i>O</i>`;
             players.classList.remove("active");
             playerSign = "O";
             allbox[randomBox].setAttribute("id", playerSign);

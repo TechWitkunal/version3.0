@@ -289,9 +289,10 @@ function bot(runBot) {
                 if (funcRNot.innerHTML == "false") {
                     let array2 = arrayValue();
                     let place = randomPlace(array2);
+                    // otherConditionFunc()
                     funcRNot.innerHTML = true;
                     console.log(place, "...plase select or not")
-                    if (!place) { funcRNot = false; randomPlace(array2); }
+                    if (!place) { funcRNot = false; bot(runBot); }
                 }
                 console.log(funcRNot.innerHTML, "...10");
             }
@@ -383,36 +384,39 @@ function playRandom(sign, runBot) {
 function otherConditionFunc(sign, array) {
     if ((getId(1) == sign && getId(2) == sign) || (getId(2) == sign && getId(3) == sign) || (getId(1) == sign && getId(3) == sign)) {
         if (getId(2) == sign && getId(3) == sign) {
-            if (checkplace(1 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(1, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(1, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(1) == sign && getId(3) == sign) {
-            if (checkplace(2 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(2, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(2, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(3 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(3, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(3, array, runBot);
                 console.log("...from other");
@@ -423,36 +427,39 @@ function otherConditionFunc(sign, array) {
     else if ((getId(4) == sign && getId(5) == sign) || (getId(5) == sign && getId(6) == sign) || (getId(4) == sign && getId(6) == sign)) {
         // console.log("5-6")
         if (getId(5) == sign && getId(6) == sign) {
-            if (checkplace(4 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(4, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(4, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(4) == sign && getId(6) == sign) {
-            if (checkplace(5 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(5, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(5, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(6 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(6, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(6, array, runBot);
                 console.log("...from other");
@@ -461,37 +468,40 @@ function otherConditionFunc(sign, array) {
         return true;
     }
     else if ((getId(7) == sign && getId(8) == sign) || (getId(8) == sign && getId(9) == sign) || (getId(7) == sign && getId(9) == sign)) {
-        if (getId(8) == sign, array == false && getId(9) == sign) {
-            if (checkplace(7 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+        if (getId(8) == sign && getId(9) == sign) {
+            if (checkplace(7, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(7, array, runBot);
                 console.log("...from other");
             }
         }
-        else if (getId(8) == sign && getId(9) == sign) {
-            if (checkplace(8 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+        else if (getId(7) == sign && getId(9) == sign) {
+            if (checkplace(8, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(8, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(6 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(6, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(6, array, runBot);
                 console.log("...from other");
@@ -500,37 +510,40 @@ function otherConditionFunc(sign, array) {
         return true;
     }
     else if ((getId(1) == sign && getId(4) == sign) || (getId(4) == sign && getId(7) == sign) || (getId(1) == sign && getId(7) == sign)) {
-        if (getId(4) == sign, array == false && getId(7) == sign) {
-            if (checkplace(1 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+        if (getId(4) == sign && getId(7) == sign) {
+            if (checkplace(1, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(1, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(1) == sign && getId(7) == sign) {
-            if (checkplace(4 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(4, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(4, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(7 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(7, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(7, array, runBot);
                 console.log("...from other");
@@ -539,37 +552,40 @@ function otherConditionFunc(sign, array) {
         return true;
     }
     else if ((getId(2) == sign && getId(5) == sign) || (getId(5) == sign && getId(8) == sign) || (getId(2) == sign && getId(8) == sign)) {
-        if (getId(5) == sig2, array && getId(8) == sign) {
-            if (checkplace(2 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+        if (getId(5) == sign && getId(8) == sign) {
+            if (checkplace(2, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(2, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(2) == sign && getId(8) == sign) {
-            if (checkplace(5 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(5, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(5, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(8 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(8, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(8, array, runBot);
                 console.log("...from other");
@@ -578,37 +594,40 @@ function otherConditionFunc(sign, array) {
         return true;
     }
     else if ((getId(3) == sign && getId(6) == sign) || (getId(6) == sign && getId(9) == sign) || (getId(3) == sign && getId(9) == sign)) {
-        if (getId(6) == sign, array && getId(9) == sign) {
-            if (checkplace(3 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+        if (getId(6) == sign && getId(9) == sign) {
+            if (checkplace(3, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(3, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(3) == sign && getId(9) == sign) {
-            if (checkplace(6 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(6, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(6, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(9 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(9, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(9, array, runBot);
                 console.log("...from other");
@@ -618,36 +637,39 @@ function otherConditionFunc(sign, array) {
     }
     else if ((getId(1) == sign && getId(5) == sign) || (getId(5) == sign && getId(9) == sign) || (getId(1) == sign && getId(9) == sign)) {
         if (getId(5) == sign && getId(9) == sign) {
-            if (checkplace(1 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(1, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(1, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(1) == sign && getId(9) == sign) {
-            if (checkplace(5 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(5, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(5, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(9 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(9, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(9, array, runBot);
                 console.log("...from other");
@@ -656,37 +678,40 @@ function otherConditionFunc(sign, array) {
         return true;
     }
     else if ((getId(3) == sign && getId(5) == sign) || (getId(5) == sign && getId(7) == sign) || (getId(3) == sign && getId(7) == sign)) {
-        if (getId(5) == sign, array && getId(7) == sign) {
-            if (checkplace(3 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+        if (getId(5) == sign && getId(7) == sign) {
+            if (checkplace(3, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(3, array, runBot);
                 console.log("...from other");
             }
         }
         else if (getId(3) == sign && getId(7) == sign) {
-            if (checkplace(5 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(5, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(5, array, runBot);
                 console.log("...from other");
             }
         }
         else {
-            if (checkplace(7 && array) == false) {
-                let array2 = arrayValue();
-                let place = randomPlace(array2);
+            if (checkplace(7, array) == false) {
+                // let array2 = arrayValue();
+                // let place = randomPlace(array2);
+                otherConditionFunc("O", array)
                 funcRNot.innerHTML = true;
                 console.log(place, "...plase select or not")
-                if (!place) { funcRNot = false; randomPlace(array2); }
+                // if (!place) { funcRNot = false; bot(runBot); }
             } else {
                 botput(7, array, runBot);
                 console.log("...from other");
@@ -758,9 +783,9 @@ function selectWinner() {
         runBot = false;
         bot(runBot);
 
-        if ((getId(1) == userChoise && getId(7) == userChoise && getId(9) == userChoise) || (getId(7) == userChoise && getId(1) == userChoise && getId(3) == userChoise) || (getId(3) == userChoise && getId(9) == userChoise && getId(7) == userChoise)) {
-            alert("Ooo.. You play a trick with me now I understand your trick");
-        }
+        // if ((getId(1) == userChoise && getId(7) == userChoise && getId(9) == userChoise) || (getId(7) == userChoise && getId(1) == userChoise && getId(3) == userChoise) || (getId(3) == userChoise && getId(9) == userChoise && getId(7) == userChoise)) {
+        //     alert("Ooo.. You play a trick with me now I understand your trick");
+        // }
 
         setTimeout(function () {
             playBoard.classList.remove("show");
@@ -783,4 +808,4 @@ function selectWinner() {
     replay.addEventListener("click", () => {
         window.location.reload();
     })
-}
+} 

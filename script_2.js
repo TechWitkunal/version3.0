@@ -8,19 +8,43 @@ const startBox = document.querySelector(".start-box"),
     wonText = resultBox.querySelector("header p"),
     replay = resultBox.querySelector(".option button");
 
+
 let userChoise;
+let playerXIcon = "fa-solid fa-xmark";
+let playerOIcon = "fa-regular fa-circle";
+let playerSign = "";
+let botStatus = false;
+let filledBoxes = [];
+let conditionVerifyStatus = false;
+let botStep = 0;
+
+let rowCombo = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7]
+]
+
+let connerCombo = [1,3,7,9];
 
 window.addEventListener("load", () => {
     // adding function clickedBox to all span tag inside section
     for (let i = 0; i < allbox.length; i++) {
         allbox[i].setAttribute("onclick", "clickedBox(this)")
     }
+
     startXbtn.addEventListener("click", () => {
         startBox.classList.add("hide");
         playBoard.classList.add("show");
         userChoise = "X";
     })
     startObtn.addEventListener("click", () => {
+        // alert("Select only X...please don't select O")
+        // window.location.reload();
         startBox.classList.add("hide");
         playBoard.classList.add("show");
         players.setAttribute("class", "players active player");
@@ -28,748 +52,238 @@ window.addEventListener("load", () => {
     })
 })
 
-let playerXIcon = "fa-solid fa-xmark";
-let playerOIcon = "fa-regular fa-circle";
-let playerSign = "X";
-let runBot = true;
-let botRunTimes = 0;
-
-// when user click
 function clickedBox(element) {
     if (players.classList.contains("player")) {
         // element.innerHTML = `<i class="${playerOIcon}"></i>`;
         element.innerHTML = `<i>O</i>`;
         players.classList.add("active");
-        playerSign = "O";
-        element.setAttribute("id", playerSign);
+
+        playerSign = "X";
+        console.log(playerSign, userChoise, "////////////")
+        element.setAttribute("id", "O");
+        console.log(parseInt(element.getAttribute("data-box-num")))
+        if (checkplace(parseInt(element.getAttribute("data-box-num")), filledBoxes)) filledBoxes.push(parseInt(element.getAttribute("data-box-num")));
+        element.style.pointerEvents = "none";
+        selectWinner(playerSign);
     } else {
         // element.innerHTML = `<i class="${playerXIcon}"></i>`;
         element.innerHTML = `<i>X</i>`;
         players.classList.add("active");
-        playerSign = "X";
-        element.setAttribute("id", playerSign);
+        playerSign = "O";
+        console.log(playerSign, userChoise, "////////////")
+        element.setAttribute("id", "X");
+        console.log(parseInt(element.getAttribute("data-box-num")))
+        if (checkplace(parseInt(element.getAttribute("data-box-num")), filledBoxes)) filledBoxes.push(parseInt(element.getAttribute("data-box-num")));
+        element.style.pointerEvents = "none";
+        selectWinner(playerSign);
     }
-    selectWinner();
     playBoard.style.pointerEvents = "none";
-    element.style.pointerEvents = "none";
     let randomDelayTime = ((Math.random() * 1000) + 200).toFixed();
     setTimeout(function () {
-        bot(runBot);
+        botStatus = true;
+        bot(botStatus);
     }, randomDelayTime)
 }
 
 
+
 function arrayValue() {
-    let temp_array = []
-    for (let i = 0; i < allbox.length; i++) {
-        if (allbox[i].childElementCount == 0 && checkplace(i + 1, temp_array) == false) {
-            temp_array.push(i + 1);
+    let array = [];
+    for (let i = 1; i <= allbox.length; i++) {
+        if (allbox[i - 1].id == "X" || allbox[i - 1].id == "O") {
+            console.log(i, ".................../// enter in array")
+            array.push(i);
         }
     }
-    return temp_array;
+    return array;
 }
-
-let funcRNot = document.createElement("value");
-document.body.appendChild(funcRNot);
-function bot(runBot) {
-    if (runBot) {
-        playerSign = "O";
-        ranN = 0;
-        funcRNot.innerHTML = "false";
-        let array = [];
-        array = arrayValue();
-        console.log(array, "...values are as follow")
-        if (array.length > 0) {
-            console.log(funcRNot.innerHTML);
-            runBot = true;
-            let otherCondition = playRandom("O", runBot);
-            console.log(otherCondition, "...other condition run");
-            if (!(otherCondition)) {
-                if ((getId(1) == userChoise && getId(2) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(3, array)) {
-                    botput(3, array, runBot)
-                    funcRNot.innerHTML = "true";
-                    // console.log(runBot, "...value of runbot");
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                // console.log(funcRNot.innerHTML == "false");
-                if ((getId(2) == userChoise && getId(3) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(1, array)) {
-                    botput(1, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(1) == userChoise && getId(3) == userChoise && checkplace(2, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(2, array)) {
-                    botput(2, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                //
-                if ((getId(4) == userChoise && getId(5) == userChoise && checkplace(6, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(6, array)) {
-                    botput(6, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(5) == userChoise && getId(6) == userChoise && checkplace(4, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(4, array)) {
-                    botput(4, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(4) == userChoise && getId(6) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(5, array)) {
-                    botput(5, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                //
-                console.log(array)
-                if ((getId(7) == userChoise && getId(8) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(9, array)) {
-                    botput(9, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(8) == userChoise && getId(9) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(7, array)) {
-                    botput(7, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(7) == userChoise && getId(9) == userChoise && checkplace(8, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(8, array)) {
-                    botput(8, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(1) == userChoise && getId(4) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(7, array)) {
-                    runBot = true;
-                    botput(7, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(1) == userChoise && getId(7) == userChoise && checkplace(4, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(4, array)) {
-                    botput(4, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(4) == userChoise && getId(7) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(1, array)) {
-                    botput(1, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                //
-                if ((getId(2) == userChoise && getId(5) == userChoise && checkplace(8, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(8, array)) {
-                    botput(8, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // 
-                // }/
-                if ((getId(5) == userChoise && getId(8) == userChoise && checkplace(2, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(2, array)) {
-                    botput(2, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(2) == userChoise && getId(8) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(5, array)) {
-                    botput(5, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(3) == userChoise && getId(6) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(9, array)) {
-                    botput(9, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(6) == userChoise && getId(9) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(3, array)) {
-                    botput(3, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(3) == userChoise && getId(9) == userChoise && checkplace(6, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(6, array)) {
-                    botput(6, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(1) == userChoise && getId(5) == userChoise && checkplace(9, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(9, array)) {
-                    botput(9, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(5) == userChoise && getId(9) == userChoise && checkplace(1, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(1, array)) {
-                    botput(1, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(1) == userChoise && getId(9) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(5, array)) {
-                    botput(5, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(3) == userChoise && getId(5) == userChoise && checkplace(7, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(7, array)) {
-                    botput(7, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-                if ((getId(5) == userChoise && getId(7) == userChoise && checkplace(3, array) && (funcRNot.innerHTML == "false"))) {
-                    // if (checkplace(3, array)) {
-                    botput(3, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-                // }
-
-                if ((getId(3) == userChoise && getId(7) == userChoise && checkplace(5, array) && (funcRNot.innerHTML == "false"))) {
-                    console.log(checkplace(5, array), " ... 1")
-                    // if (checkplace(5, array)) {
-                    botput(5, array, runBot)
-                    console.log("...inside this")
-                    funcRNot.innerHTML = "true";
-                    console.log(funcRNot.innerHTML, "...10");
-                }
-
-                if (funcRNot.innerHTML == "false") {
-                    let array2 = arrayValue();
-                    let place = randomPlace(array2);
-                    // otherConditionFunc()
-                    funcRNot.innerHTML = true;
-                    console.log(place, "...plase select or not")
-                    if (!place) { funcRNot = false; bot(runBot); }
-                }
-                console.log(funcRNot.innerHTML, "...10");
-            }
-        }
-    }
-}
-
-function randomPlace(array2) {
-    let randomBox = array2[Math.floor(Math.random() * array2.length)] // getting random position for bot to play
-    console.log(randomBox, allbox[randomBox - 1], allbox[randomBox - 1].childElementCount == 0, "...random box place")
-    if (allbox[randomBox - 1].childElementCount == 0) {
-        runBot = true;
-        botput((randomBox), array2, runBot);
-        console.log(randomBox - 1, "...get selected")
-        return true;
-    }
-    return false;
-}
-
-function playRandom(sign, runBot) {
-    console.log(sign)
-    botRunTimes++;
-    let x = 0, index = 0;
-    if (runBot == true) {
-        let array = arrayValue();
-        if (botRunTimes == 1) {
-            for (let i = 0; i < allbox.length; i++) {
-                if (allbox[i].childElementCount > 0) {
-                    x++;
-                    index = i;
-                }
-            }
-            if (x == 1) {
-                index++;
-                console.log(index, "....index......../");
-                if (index == 1) {
-                    if (checkplace(9, array)) {
-                        botput(9, array, runBot);
-                        botRunTimes++;
-                        return true;
-                    }
-                    else {
-                        bot(runBot);
-                        return false;
-                    }
-                }
-                else if (index == 7) {
-                    console.log(checkplace(3, array), "....../ for 7")
-                    if (checkplace(3, array)) {
-                        botput(3, array, runBot);
-                        botRunTimes++;
-                        return true;
-                    }
-                    else {
-                        bot(runBot);
-                        return false;
-                    }
-                } else if (index == 9) {
-                    if (checkplace(1, array)) {
-                        botput(1, array, runBot);
-                        botRunTimes++;
-                        return true;
-                    }
-                    else {
-                        bot(runBot);
-                        return false;
-                    }
-                } else if (index == 3) {
-                    if (checkplace(7, array)) {
-                        botput(7, array, runBot);
-                        botRunTimes++;
-                        return true;
-                    }
-                    else {
-                        bot(runBot);
-                        return false;
-                    }
-                }
-            } else {
-                return otherConditionFunc(sign, array);
-            }
-        } else {
-            return otherConditionFunc(sign, array);
-        }
-
-    }
-}
-
-function otherConditionFunc(sign, array) {
-    if ((getId(1) == sign && getId(2) == sign) || (getId(2) == sign && getId(3) == sign) || (getId(1) == sign && getId(3) == sign)) {
-        if (getId(2) == sign && getId(3) == sign) {
-            if (checkplace(1, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(1, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(1) == sign && getId(3) == sign) {
-            if (checkplace(2, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(2, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(3, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(3, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(4) == sign && getId(5) == sign) || (getId(5) == sign && getId(6) == sign) || (getId(4) == sign && getId(6) == sign)) {
-        // console.log("5-6")
-        if (getId(5) == sign && getId(6) == sign) {
-            if (checkplace(4, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(4, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(4) == sign && getId(6) == sign) {
-            if (checkplace(5, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(5, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(6, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(6, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(7) == sign && getId(8) == sign) || (getId(8) == sign && getId(9) == sign) || (getId(7) == sign && getId(9) == sign)) {
-        if (getId(8) == sign && getId(9) == sign) {
-            if (checkplace(7, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(7, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(7) == sign && getId(9) == sign) {
-            if (checkplace(8, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(8, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(6, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(6, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(1) == sign && getId(4) == sign) || (getId(4) == sign && getId(7) == sign) || (getId(1) == sign && getId(7) == sign)) {
-        if (getId(4) == sign && getId(7) == sign) {
-            if (checkplace(1, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(1, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(1) == sign && getId(7) == sign) {
-            if (checkplace(4, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(4, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(7, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(7, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(2) == sign && getId(5) == sign) || (getId(5) == sign && getId(8) == sign) || (getId(2) == sign && getId(8) == sign)) {
-        if (getId(5) == sign && getId(8) == sign) {
-            if (checkplace(2, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(2, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(2) == sign && getId(8) == sign) {
-            if (checkplace(5, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(5, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(8, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(8, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(3) == sign && getId(6) == sign) || (getId(6) == sign && getId(9) == sign) || (getId(3) == sign && getId(9) == sign)) {
-        if (getId(6) == sign && getId(9) == sign) {
-            if (checkplace(3, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(3, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(3) == sign && getId(9) == sign) {
-            if (checkplace(6, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(6, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(9, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(9, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(1) == sign && getId(5) == sign) || (getId(5) == sign && getId(9) == sign) || (getId(1) == sign && getId(9) == sign)) {
-        if (getId(5) == sign && getId(9) == sign) {
-            if (checkplace(1, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(1, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(1) == sign && getId(9) == sign) {
-            if (checkplace(5, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(5, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(9, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(9, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    }
-    else if ((getId(3) == sign && getId(5) == sign) || (getId(5) == sign && getId(7) == sign) || (getId(3) == sign && getId(7) == sign)) {
-        if (getId(5) == sign && getId(7) == sign) {
-            if (checkplace(3, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(3, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else if (getId(3) == sign && getId(7) == sign) {
-            if (checkplace(5, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(5, array, runBot);
-                console.log("...from other");
-            }
-        }
-        else {
-            if (checkplace(7, array) == false) {
-                // let array2 = arrayValue();
-                // let place = randomPlace(array2);
-                otherConditionFunc("O", array)
-                funcRNot.innerHTML = true;
-                console.log(place, "...plase select or not")
-                // if (!place) { funcRNot = false; bot(runBot); }
-            } else {
-                botput(7, array, runBot);
-                console.log("...from other");
-            }
-        };
-        return true;
-    } else {
-        return false;
-    }
-}
-
 
 function checkplace(randomBox, array) {
-    console.log(randomBox, array, "...check function for this")
+    console.log(randomBox)
+    if (randomBox == 0) randomBox + 1;
+    array = arrayValue();
+    console.log(array);
     for (let i = 0; i < array.length; i++) {
         if (array[i] == randomBox) {
-            // TF = true;
-            return true;
+            console.log("return false", randomBox, array[i]);
+            return false;
         }
     }
-    // console.log(TF, " ... ", randomBox);
-    console.log(array, "..final array");
-    return false;
-}
-
-function botput(randomBox, array, runBot) {
-    console.log(randomBox, "...value of randomBox")
-    if (!(runBot)) { return }
-    botRunTimes++;
-    runBot = false;
-    playRandom(1, 2, 3, "O", runBot, array);
-    randomBox = randomBox - 1;
-    if (allbox[randomBox].childElementCount == 0) {
-        if (players.classList.contains("player")) {
-            // allbox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`;
-            allbox[randomBox].innerHTML = `<i>X</i>`;
-            players.classList.remove("active");
-            playerSign = "X";
-            allbox[randomBox].setAttribute("id", playerSign);
-        } else {
-            // allbox[randomBox].innerHTML = `<i class="${playerOIcon}"></i>`;
-            allbox[randomBox].innerHTML = `<i>O</i>`;
-            players.classList.remove("active");
-            playerSign = "O";
-            allbox[randomBox].setAttribute("id", playerSign);
-        }
-    } else {
-        if (!(runBot)) { return }
-        let randomBox = array[Math.floor(Math.random() * array.length)] // getting random position for bot to play
-        botput(randomBox, runBot);
-    }
-    selectWinner();
-    allbox[randomBox].style.pointerEvents = "none";
-    playBoard.style.pointerEvents = "auto";
+    console.log(randomBox, "return true");
+    return true;
 }
 
 function getId(idname) {
     return document.querySelector(".box" + idname).id;
+}
+
+function bot(botStatus) {
+    if (botStatus == false) return;
+    // if (filledBoxes > 8) selectWinner();
+    firstStepConditon(filledBoxes);
+
+}
+
+function firstStepConditon(filledBoxes) {
+    // playerSign = "O"
+    console.log("inside first condition" + botStep)
+    if (botStep == 0) {
+        console.log(checkplace(5, filledBoxes))
+        if (checkplace(5, filledBoxes)) {
+            console.log("first -> 0 chance for 5");
+            botput(playerSign, 5);
+            console.log("inside first if")
+        } else {
+            console.log("1 -> 3 condition for random");
+            let conditonStatus3 = false;
+            let randomBox = Math.floor(Math.random() * 4) + 1; 
+            console.log(connerCombo[randomBox-1], "........else randomBox value")
+            if (checkplace(connerCombo[randomBox-1], filledBoxes)) {
+                conditonStatus3 = true;
+                botput(playerSign, connerCombo[randomBox-1]);
+            }
+            if (!conditonStatus3) thirdStepCondition();
+            // if (!thirdStepCondition(filledBoxes)) thirdStepCondition();
+        }
+    } else {
+        let call = botPair();
+        if (!call) {
+            console.log("not first chance call second condition");
+            secondStepCondition()
+        }
+    }
+    botStep++;
+}
+
+function botPair() {
+    console.log("...pair......inside second condition");
+    filledBoxes = arrayValue();
+    // playerSign = "X";
+    let j = 1;
+    let conditonStatus = false;
+    rowCombo.forEach(i => {
+        // console.log(getId(i[0]), ".............value of i");
+        if (getId(i[0]) == playerSign && getId(i[1]) == playerSign && checkplace(i[2], filledBoxes) && conditonStatus == false) {
+            console.log("condition for this match...", i[2]);
+            conditonStatus = true
+            botput(playerSign, i[2])
+        }
+        if (getId(i[1]) == playerSign && getId(i[2]) == playerSign && checkplace(i[0], filledBoxes) && conditonStatus == false) {
+            console.log("condition for this match...", i[0]);
+            conditonStatus = true
+            botput(playerSign, i[0])
+        }
+        if (getId(i[0]) == playerSign && getId(i[2]) == playerSign && checkplace(i[1], filledBoxes) && conditonStatus == false) {
+            console.log("condition for this match...", i[1]);
+            conditonStatus = true
+            botput(playerSign, i[1])
+        }
+    })
+    if (conditonStatus == false) {
+        console.log("return false");
+        return false;
+    }
+    console.log("return true");
+    return true;
+}
+
+// let conditonStatus = document.createElement("div");
+// document.body.appendChild();
+function secondStepCondition() {
+    filledBoxes = arrayValue();
+    // playerSign = "O";
+    console.log(playerSign, filledBoxes, "...inside second condition");
+    let j = 1;
+    let conditonStatus = false;
+    rowCombo.forEach(i => {
+        // console.log(getId(i[0]), ".............value of i");
+        if (getId(i[0]) ==userChoise && getId(i[1]) ==userChoise && checkplace(i[2], filledBoxes) && conditonStatus == false) {
+            console.log("condition for this match...", i[2]);
+            conditonStatus = true
+            botput(playerSign, i[2])
+        }
+        if (getId(i[1]) ==userChoise && getId(i[2]) ==userChoise && checkplace(i[0], filledBoxes) && conditonStatus == false) {
+            console.log("condition for this match...", i[0]);
+            conditonStatus = true
+            botput(playerSign, i[0])
+        }
+        if (getId(i[0]) ==userChoise && getId(i[2]) ==userChoise && checkplace(i[1], filledBoxes) && conditonStatus == false) {
+            console.log("condition for this match...", i[1]);
+            conditonStatus = true
+            botput(playerSign, i[1])
+        }
+    })
+    if (conditonStatus == false) {
+        console.log("no condition match inside false")
+        console.log(conditonStatus);
+        let call = thirdStepCondition(filledBoxes);
+        if (!call) {
+            let conditonStatus2 = false;
+            console.log("enter in loop............");
+            rowCombo.forEach(i => {
+                console.log(i, "//////////// i value");
+                if (checkplace(i[0], filledBoxes) && conditonStatus2 == false) {
+                    console.log(i[0], "////////////////////............../////////////")
+                    botput(playerSign, i[0])
+                    conditonStatus2 = true;
+                }
+                if (checkplace(i[1], filledBoxes) && conditonStatus2 == false) {
+                    console.log(i[1], "////////////////////............../////////////")
+                    botput(playerSign, i[1])
+                    conditonStatus2 = true;
+                }
+                if (checkplace(i[2], filledBoxes) && conditonStatus2 == false) {
+                    console.log(i[2], "////////////////////............../////////////")
+                    botput(playerSign, i[2])
+                    conditonStatus2 = true;
+                }
+            })
+            if (conditonStatus2 == false) selectWinner();
+        }
+    }
+}
+
+
+
+function thirdStepCondition(filledBoxes) {
+    let randomBox = Math.floor(Math.random() * 9) + 1; // getting random position for bot to play
+    if (!checkplace(randomBox, filledBoxes)) return false;
+    console.log("random place is selected is this:- " + randomBox);
+    // console.log(randomBox, allbox[randomBox - 1], allbox[randomBox - 1].childElementCount == 0, "...random box place")
+    console.log(filledBoxes)
+    botput(playerSign, randomBox);
+    return true;
+}
+
+function botput(playerSign, box) {
+    box--;
+    console.log(box, playerSign, "..............botput final");
+    if (playerSign == "X") {
+        console.log(box + 1);
+        if (checkplace(box + 1, filledBoxes)) filledBoxes.push(box + 1);
+        // allbox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`;
+        allbox[box].innerHTML = `<i>X</i>`;
+        players.classList.remove("active");
+        // playerSign = "X";
+        console.log("X", "....inside put");
+        allbox[box].setAttribute("id", "X");
+        console.log("X...");
+        allbox[box].style.pointerEvents = "none";
+    } else {
+        console.log(box + 1, ".............data t obe check")
+        if (checkplace(box + 1, filledBoxes)) filledBoxes.push(box + 1);
+        // allbox[randomBox].innerHTML = `<i class="${playerOIcon}"></i>`;
+        allbox[box].innerHTML = `<i>O</i>`;
+        players.classList.remove("active");
+        // playerSign = "O";
+        console.log("O", "....inside put");
+        allbox[box].setAttribute("id", "O");
+        console.log("O...", box + 1);
+        allbox[box].style.pointerEvents = "none";
+    }
+    playBoard.style.pointerEvents = "auto";
+    botStatus = false;
+    selectWinner(playerSign);
 }
 
 function checkThreeId(val1, val2, val3, sign) {
@@ -778,14 +292,11 @@ function checkThreeId(val1, val2, val3, sign) {
     }
 }
 
-function selectWinner() {
-    if (checkThreeId(1, 2, 3, playerSign) || checkThreeId(4, 5, 6, playerSign) || checkThreeId(7, 8, 9, playerSign) || checkThreeId(1, 4, 7, playerSign) || checkThreeId(2, 5, 8, playerSign) || checkThreeId(3, 6, 9, playerSign) || checkThreeId(1, 5, 9, playerSign) || checkThreeId(3, 5, 7, playerSign)) {
-        runBot = false;
-        bot(runBot);
+function selectWinner(playerSign) {
 
-        // if ((getId(1) == userChoise && getId(7) == userChoise && getId(9) == userChoise) || (getId(7) == userChoise && getId(1) == userChoise && getId(3) == userChoise) || (getId(3) == userChoise && getId(9) == userChoise && getId(7) == userChoise)) {
-        //     alert("Ooo.. You play a trick with me now I understand your trick");
-        // }
+    if (checkThreeId(1, 2, 3, playerSign) || checkThreeId(4, 5, 6, playerSign) || checkThreeId(7, 8, 9, playerSign) || checkThreeId(1, 4, 7, playerSign) || checkThreeId(2, 5, 8, playerSign) || checkThreeId(3, 6, 9, playerSign) || checkThreeId(1, 5, 9, playerSign) || checkThreeId(3, 5, 7, playerSign)) {
+        botStatus = false;
+        bot(botStatus);
 
         setTimeout(function () {
             playBoard.classList.remove("show");
@@ -795,6 +306,9 @@ function selectWinner() {
 
 
         wonText.innerHTML = `Player <b>${playerSign}</b> won the match`;
+        playBoard.style.pointerEvents = "none";
+        botStatus = false;
+        // selectWinner(playerSign);
     } else {
         if (getId(1) != "" && getId(2) != "" && getId(3) != "" && getId(4) != "" && getId(5) != "" && getId(6) != "" && getId(7) != "" && getId(8) != "" && getId(9) != "") {
             wonText.innerHTML = `Match get draw`;
@@ -802,6 +316,9 @@ function selectWinner() {
                 playBoard.classList.remove("show");
                 resultBox.classList.add("show");
             }, 700)
+            playBoard.style.pointerEvents = "none";
+            botStatus = false;
+            // selectWinner(playerSign);
         }
     }
 
